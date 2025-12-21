@@ -377,96 +377,305 @@
         display: block;
       }
 
-      /* Projects Section */
-      #projects {
-        background-color: rgba(15, 23, 42, 0.7);
-        backdrop-filter: blur(5px);
+      /* Project Modal Styles */
+      .project-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2000;
+        padding: 20px;
       }
 
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 30px;
+      .modal-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
       }
 
-      .project {
-        background: rgba(30, 41, 59, 0.5);
-        border-radius: var(--radius);
+      .modal-container {
+        position: relative;
+        max-width: 1200px;
+        max-height: 90vh;
+        margin: 0 auto;
+        background: var(--dark);
+        border-radius: 12px;
         overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(148, 163, 184, 0.1);
+        animation: modalSlideIn 0.4s ease;
+      }
+
+      @keyframes modalSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px) scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 30px;
+        background: rgba(30, 41, 59, 0.8);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+      }
+
+      .modal-header h3 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      .modal-header h3::after {
+        display: none;
+      }
+
+      .modal-close {
+        background: rgba(239, 68, 68, 0.1);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: var(--danger);
+        font-size: 1.2rem;
+        cursor: pointer;
         transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-close:hover {
+        background: var(--danger);
+        color: white;
+        transform: rotate(90deg);
+      }
+
+      .modal-content {
+        overflow-y: auto;
+        max-height: calc(90vh - 80px);
+      }
+
+      .website-preview {
+        background: #1e293b;
+        border-radius: 8px;
+        margin: 20px;
+        overflow: hidden;
         border: 1px solid rgba(148, 163, 184, 0.1);
       }
 
-      .project:hover {
-        transform: translateY(-10px);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--primary);
+      .preview-header {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        background: rgba(15, 23, 42, 0.8);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.1);
       }
 
-      .project-image {
-        height: 200px;
-        overflow: hidden;
+      .browser-dots {
+        display: flex;
+        gap: 8px;
+        margin-right: 15px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .dot.red {
+        background: #f87171;
+      }
+      .dot.yellow {
+        background: #fbbf24;
+      }
+      .dot.green {
+        background: #10b981;
+      }
+
+      .preview-url {
+        flex: 1;
+        background: rgba(30, 41, 59, 0.5);
+        padding: 8px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: var(--gray);
+        font-family: "Roboto Mono", monospace;
+        direction: ltr;
+        text-align: center;
+      }
+
+      .preview-frame {
         position: relative;
+        height: 400px;
+        overflow: hidden;
       }
 
-      .project-image img {
+      .website-screenshot {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: var(--transition);
+        transition: transform 0.5s ease;
       }
 
-      .project:hover .project-image img {
-        transform: scale(1.05);
+      .preview-frame:hover .website-screenshot {
+        transform: scale(1.02);
       }
 
-      .project-content {
-        padding: 25px;
+      .preview-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
       }
 
-      .project h4 {
-        font-size: 1.4rem;
-        margin-bottom: 10px;
+      .preview-frame:hover .preview-overlay {
+        opacity: 1;
       }
 
-      .project p {
+      .project-details {
+        padding: 30px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .detail-section h4 {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .detail-section p {
         color: var(--light-gray);
-        margin-bottom: 20px;
+        line-height: 1.7;
       }
 
-      .project-tech {
+      .tech-stack {
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-bottom: 20px;
       }
 
-      .tech-tag {
+      .tech-badge {
         background: rgba(37, 99, 235, 0.1);
         color: var(--primary);
-        padding: 5px 12px;
+        padding: 8px 16px;
         border-radius: 20px;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        border: 1px solid rgba(37, 99, 235, 0.3);
+        transition: var(--transition);
       }
 
+      .tech-badge:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .features-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .features-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        color: var(--light-gray);
+      }
+
+      .features-list li i {
+        color: var(--success);
+      }
+
+      /* تعديل أزرار المشروع */
       .project-links {
         display: flex;
         gap: 15px;
       }
 
-      .project-links a {
-        color: var(--light);
+      .view-website,
+      .preview-project {
+        padding: 10px 20px;
+        border-radius: var(--radius);
         text-decoration: none;
+        transition: var(--transition);
         display: flex;
         align-items: center;
-        gap: 5px;
-        transition: var(--transition);
+        gap: 8px;
+        font-weight: 600;
       }
 
-      .project-links a:hover {
+      .view-website {
+        background: var(--primary);
+        color: white;
+        border: 2px solid var(--primary);
+      }
+
+      .view-website:hover {
+        background: transparent;
         color: var(--primary);
+        transform: translateY(-2px);
       }
 
+      .preview-project {
+        background: transparent;
+        color: var(--light);
+        border: 2px solid var(--gray);
+      }
+
+      .preview-project:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-2px);
+      }
+
+      /* Responsive Modal */
+      @media (max-width: 992px) {
+        .project-details {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .modal-container {
+          margin: 10px;
+          max-height: 95vh;
+        }
+
+        .preview-frame {
+          height: 300px;
+        }
+
+        .project-links {
+          flex-direction: column;
+        }
+      }
       /* Skills Section */
       .skills-container {
         display: grid;
@@ -933,84 +1142,36 @@
           <h3>My Projects</h3>
         </div>
         <div class="projects-grid">
-          <div class="project fade-in">
+          <div class="project fade-in" id="alwahbani-project">
             <div class="project-image">
               <img
-                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                alt="E-Commerce Platform"
+                src="./imgs/AlwahbaniWebPhoto.png"
+                alt="Alwahbani Arduino Store"
               />
             </div>
             <div class="project-content">
-              <h4>E-Commerce Platform</h4>
+              <h4>Alwahbani.com - Arduino Store</h4>
               <p>
-                A full-featured online store with product management, shopping
-                cart, and secure payment processing.
+                متجر إلكتروني متكامل لبيع قطع الأردوينو والإلكترونيات، مزود
+                بنظام إدارة المنتجات، عربة تسوق، ومعالجة دفع آمنة.
               </p>
               <div class="project-tech">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">MongoDB</span>
-                <span class="tech-tag">Stripe API</span>
-              </div>
-              <div class="project-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"
-                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="project fade-in delay-1">
-            <div class="project-image">
-              <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                alt="Task Management App"
-              />
-            </div>
-            <div class="project-content">
-              <h4>Task Management App</h4>
-              <p>
-                A productivity tool for teams to collaborate on projects with
-                real-time updates and notifications.
-              </p>
-              <div class="project-tech">
-                <span class="tech-tag">Vue.js</span>
-                <span class="tech-tag">Firebase</span>
-                <span class="tech-tag">Tailwind CSS</span>
-              </div>
-              <div class="project-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"
-                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
-                >
-              </div>
-            </div>
-          </div>
-
-          <div class="project fade-in delay-2">
-            <div class="project-image">
-              <img
-                src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
-                alt="Weather Dashboard"
-              />
-            </div>
-            <div class="project-content">
-              <h4>Weather Dashboard</h4>
-              <p>
-                Real-time weather application with 5-day forecasts, location
-                detection, and interactive maps.
-              </p>
-              <div class="project-tech">
+                <span class="tech-tag">Laravel</span>
+                <span class="tech-tag">MySQL</span>
                 <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">API Integration</span>
-                <span class="tech-tag">Chart.js</span>
+                <span class="tech-tag">TailWind CSS</span>
               </div>
               <div class="project-links">
-                <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#"
-                  ><i class="fas fa-external-link-alt"></i> Live Demo</a
+                <a
+                  href="https://alwahbani.com"
+                  target="_blank"
+                  class="view-website"
                 >
+                  <i class="fas fa-external-link-alt"></i> Visit
+                </a>
+                <a href="#" class="preview-project" id="openModal">
+                  <i class="fas fa-search-plus"></i> Preview
+                </a>
               </div>
             </div>
           </div>
@@ -1265,6 +1426,78 @@
         </div>
       </div>
     </footer>
+
+    <!-- Project Preview Modal -->
+    <div class="project-modal" id="projectModal">
+      <div class="modal-overlay" id="modalOverlay"></div>
+      <div class="modal-container">
+        <div class="modal-header">
+          <h3>Alwahbani.com - معاينة الموقع</h3>
+          <button class="modal-close" id="modalClose">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="modal-content">
+          <div class="website-preview">
+            <div class="preview-header">
+              <div class="browser-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <div class="preview-url">https://alwahbani.com</div>
+            </div>
+            <div class="preview-frame">
+              <img
+                src="./imgs/AlwahbaniWebPhoto.png"
+                alt="Alwahbani Website Preview"
+                class="website-screenshot"
+              />
+              <div class="preview-overlay">
+                <a
+                  href="https://alwahbani.com"
+                  target="_blank"
+                  class="btn btn-primary"
+                >
+                  <i class="fas fa-external-link-alt"></i> Visit
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="project-details">
+            <div class="detail-section">
+              <h4><i class="fas fa-info-circle"></i> وصف المشروع</h4>
+              <p>
+                موقع تجاري متكامل لشركة الوهباني المتخصصة في بيع قطع الأردوينو
+                والمكونات الإلكترونية. الموقع يحتوي على نظام إدارة محتوى متكامل،
+                نظام طلبات، وتكامل مع أنظمة الدفع.
+              </p>
+            </div>
+            <div class="detail-section">
+              <h4><i class="fas fa-cogs"></i> التقنيات المستخدمة</h4>
+              <div class="tech-stack">
+                <span class="tech-badge">Laravel</span>
+                <span class="tech-badge">MySQL</span>
+                <span class="tech-badge">TainWind CSS</span>
+                <span class="tech-badge">JavaScript</span>
+              </div>
+            </div>
+            <div class="detail-section">
+              <h4><i class="fas fa-feather-alt"></i> المميزات</h4>
+              <ul class="features-list">
+                <li><i class="fas fa-check"></i> نظام إدارة منتجات متكامل</li>
+                <li><i class="fas fa-check"></i> عربة تسوق وسهولة دفع</li>
+                <li><i class="fas fa-check"></i> لوحة تحكم للمسؤول</li>
+                <li>
+                  <i class="fas fa-check"></i> تصميم متجاوب مع جميع الأجهزة
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="js/script.js"></script>
   </body>
 </html>

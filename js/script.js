@@ -21,7 +21,6 @@ navLinks.forEach((link) => {
 const contactForm = document.getElementById("contactForm");
 contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  // Form validation would go here
   alert("Thank you for your message! I will get back to you soon.");
   contactForm.reset();
 });
@@ -80,9 +79,8 @@ const openModal = (modalId) => {
   const modal = document.getElementById(modalId);
   if (modal) {
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    document.body.style.overflow = 'hidden';
 
-    // Add animation class
     const modalContainer = modal.querySelector('.modal-container');
     modalContainer.style.animation = 'modalSlideIn 0.4s ease';
   }
@@ -93,7 +91,7 @@ const closeAllModals = () => {
   projectModals.forEach(modal => {
     modal.style.display = 'none';
   });
-  document.body.style.overflow = 'auto'; // Restore scrolling
+  document.body.style.overflow = 'auto';
 };
 
 // Event listeners for preview buttons
@@ -110,7 +108,6 @@ previewBtns.forEach(btn => {
 // Event listeners for project cards (clicking anywhere on card opens modal, unless linking out)
 projectCards.forEach(card => {
   card.addEventListener('click', (e) => {
-    // Only open modal if not clicking on links
     if (!e.target.closest('.project-links')) {
       const previewBtn = card.querySelector('.preview-project');
       if (previewBtn) {

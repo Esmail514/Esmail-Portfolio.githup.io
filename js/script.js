@@ -69,47 +69,72 @@ fadeElements.forEach((element) => {
 });
 
 // Project Modal Functionality
-const projectCard = document.getElementById('alwahbani-project');
-const previewBtn = document.querySelector('.preview-project');
-const projectModal = document.getElementById('projectModal');
-const modalOverlay = document.getElementById('modalOverlay');
-const modalClose = document.getElementById('modalClose');
+const projectCards = document.querySelectorAll('.project');
+const previewBtns = document.querySelectorAll('.preview-project');
+const projectModals = document.querySelectorAll('.project-modal');
+const modalOverlays = document.querySelectorAll('.modal-overlay');
+const modalCloses = document.querySelectorAll('.modal-close');
 
-// Open modal when clicking preview button or project card
-const openModal = () => {
-  projectModal.style.display = 'block';
-  document.body.style.overflow = 'hidden'; // Prevent background scrolling
-  
-  // Add animation class
-  const modalContainer = document.querySelector('.modal-container');
-  modalContainer.style.animation = 'modalSlideIn 0.4s ease';
+// Open modal
+const openModal = (modalId) => {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+
+    // Add animation class
+    const modalContainer = modal.querySelector('.modal-container');
+    modalContainer.style.animation = 'modalSlideIn 0.4s ease';
+  }
 };
 
-// Close modal
-const closeModal = () => {
-  projectModal.style.display = 'none';
+// Close all modals
+const closeAllModals = () => {
+  projectModals.forEach(modal => {
+    modal.style.display = 'none';
+  });
   document.body.style.overflow = 'auto'; // Restore scrolling
 };
 
-// Event listeners
-previewBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  openModal();
+// Event listeners for preview buttons
+previewBtns.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const modalId = btn.getAttribute('data-modal-target');
+    if (modalId) {
+      openModal(modalId);
+    }
+  });
 });
 
-projectCard.addEventListener('click', (e) => {
-  // Only open modal if not clicking on links
-  if (!e.target.closest('.project-links')) {
-    openModal();
-  }
+// Event listeners for project cards (clicking anywhere on card opens modal, unless linking out)
+projectCards.forEach(card => {
+  card.addEventListener('click', (e) => {
+    // Only open modal if not clicking on links
+    if (!e.target.closest('.project-links')) {
+      const previewBtn = card.querySelector('.preview-project');
+      if (previewBtn) {
+        const modalId = previewBtn.getAttribute('data-modal-target');
+        if (modalId) {
+          openModal(modalId);
+        }
+      }
+    }
+  });
 });
 
-modalOverlay.addEventListener('click', closeModal);
-modalClose.addEventListener('click', closeModal);
+// Close modal when clicking overlay or close button
+modalOverlays.forEach(overlay => {
+  overlay.addEventListener('click', closeAllModals);
+});
+
+modalCloses.forEach(closeBtn => {
+  closeBtn.addEventListener('click', closeAllModals);
+});
 
 // Close modal with Escape key
 document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && projectModal.style.display === 'block') {
-    closeModal();
+  if (e.key === 'Escape') {
+    closeAllModals();
   }
 });

@@ -364,6 +364,9 @@ nav a:hover::after {
   overflow: hidden;
   transition: var(--transition);
   border: 1px solid rgba(148, 163, 184, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .project:hover {
@@ -391,6 +394,9 @@ nav a:hover::after {
 
 .project-content {
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .project h4 {
@@ -421,6 +427,7 @@ nav a:hover::after {
 .project-links {
   display: flex;
   gap: 15px;
+  margin-top: auto;
 }
 
 .project-links a {
@@ -569,8 +576,24 @@ nav a:hover::after {
 }
 
 .social-links a:hover {
-  background: var(--primary);
   transform: translateY(-3px);
+  color: white;
+}
+
+.social-links a.github:hover {
+  background: #333;
+}
+
+.social-links a.linkedin:hover {
+  background: #0077b5;
+}
+
+.social-links a.facebook:hover {
+  background: #1877f2;
+}
+
+.social-links a.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
 form {
@@ -1082,5 +1105,81 @@ footer {
 
   .project-links {
     flex-direction: column;
+  }
+}
+
+/* Notifications */
+.notification-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.notification {
+  background: rgba(30, 41, 59, 0.9);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 15px 25px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 300px;
+  max-width: 90vw;
+  animation: notificationSlideIn 0.4s ease forwards;
+  pointer-events: auto;
+}
+
+.notification.success {
+  border-left: 4px solid var(--success);
+}
+
+.notification.error {
+  border-left: 4px solid var(--danger);
+}
+
+.notification i {
+  font-size: 1.2rem;
+}
+
+.notification.success i {
+  color: var(--success);
+}
+
+.notification.error i {
+  color: var(--danger);
+}
+
+@keyframes notificationSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification.fade-out {
+  animation: notificationFadeOut 0.4s ease forwards;
+}
+
+@keyframes notificationFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
   }
 }

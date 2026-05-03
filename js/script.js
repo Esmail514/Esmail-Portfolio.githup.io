@@ -17,12 +17,69 @@ navLinks.forEach((link) => {
   });
 });
 
+// Notification System
+const notificationContainer = document.getElementById("notificationContainer");
+
+const showNotification = (message, type = "success") => {
+  const notification = document.createElement("div");
+  notification.className = `notification ${type}`;
+  
+  const icon = type === "success" ? "fa-check-circle" : "fa-exclamation-circle";
+  
+  notification.innerHTML = `
+    <i class="fas ${icon}"></i>
+    <span>${message}</span>
+  `;
+  
+  notificationContainer.appendChild(notification);
+  
+  // Remove after 5 seconds
+  setTimeout(() => {
+    notification.classList.add("fade-out");
+    setTimeout(() => {
+      notification.remove();
+    }, 400);
+  }, 5000);
+};
+
 // Form submission
 const contactForm = document.getElementById("contactForm");
-contactForm.addEventListener("submit", (e) => {
+contactForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  alert("Thank you for your message! I will get back to you soon.");
-  contactForm.reset();
+  const formData = new FormData(contactForm);
+  const submitButton = contactForm.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton.textContent;
+
+  // Change button state
+  submitButton.disabled = true;
+  submitButton.textContent = "Sending...";
+
+  try {
+    const response = await fetch(contactForm.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      showNotification("Thank you for your message! I will get back to you soon.", "success");
+      contactForm.reset();
+    } else {
+      const data = await response.json();
+      if (Object.hasOwn(data, 'errors')) {
+        showNotification(data["errors"].map(error => error["message"]).join(", "), "error");
+      } else {
+        showNotification("Oops! There was a problem submitting your form. Note: This form requires a web server to function.", "error");
+      }
+    }
+  } catch (error) {
+    showNotification("Oops! There was a problem submitting your form. Note: This form requires a web server to function.", "error");
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = originalButtonText;
+  }
 });
 
 // Smooth scrolling for anchor links

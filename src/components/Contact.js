@@ -131,7 +131,7 @@ export default function Contact() {
               </div>
               <div className="contact-details">
                 <h4>Location</h4>
-                <p>Sana'a, Yemen</p>
+                <p>Sana&apos;a, Yemen</p>
               </div>
             </div>
 

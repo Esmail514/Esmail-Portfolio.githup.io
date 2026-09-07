@@ -1,13 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 export default function Footer() {
-  const [year, setYear] = useState(2026); // Default fallback
-
-  useEffect(() => {
-    setYear(new Date().getFullYear());
-  }, []);
+  const year = new Date().getFullYear();
 
   const handleLinkClick = (e, targetId) => {
     e.preventDefault();

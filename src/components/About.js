@@ -19,13 +19,13 @@ export default function About() {
             <p>
               I am a passionate Information Technology student specializing in
               web development and system architecture. With 3 years of hands-on
-              experience, I've developed a strong foundation in creating
+              experience, I&apos;ve developed a strong foundation in creating
               responsive, user-friendly applications.
             </p>
             <p>
               My approach combines technical expertise with creative
               problem-solving to deliver solutions that meet both business
-              requirements and user needs. I'm constantly exploring new
+              requirements and user needs. I&apos;m constantly exploring new
               technologies to expand my skill set.
             </p>
             <div className="about-stats">

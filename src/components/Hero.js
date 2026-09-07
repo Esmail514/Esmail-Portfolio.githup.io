@@ -25,7 +25,7 @@ export default function Hero() {
       <div className="container">
         <div className={`hero-content reveal ${inView ? 'active' : ''}`}>
           <h2>
-            Hello, I'm <span className="gradient-text">Esmail Ali</span>
+            Hello, I&apos;m <span className="gradient-text">Esmail Ali</span>
           </h2>
           <p className="delay-1">
             IT Developer | Full Stack Developer | Mobile Application | Tech Enthusiast

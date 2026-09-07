@@ -80,13 +80,19 @@ export default function Projects() {
     e.preventDefault();
     e.stopPropagation();
     setActiveModal(id);
-    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setActiveModal(null);
-    document.body.style.overflow = 'auto';
   };
+
+  // Sync body scroll-lock with modal state
+  useEffect(() => {
+    document.body.style.overflow = activeModal ? 'hidden' : 'auto';
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [activeModal]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {

@@ -46,9 +46,9 @@ The static HTML export will be generated inside the `out/` directory.
 
 ---
 
-## ☁️ Deployment (Cloudflare Pages / GitHub Pages)
+## ☁️ Deployment (Cloudflare Workers / Pages / GitHub Pages)
 The project is configured for clean static export (`output: 'export'`):
 - **Build command:** `npm run build`
 - **Output directory:** `out`
-- Works seamlessly on Cloudflare Pages and GitHub Pages without server adapters.
+- **Cloudflare Workers / Pages:** Uses `wrangler.jsonc` configured with `assets: { directory: "./out" }` so `wrangler deploy` deploys static assets directly without needing OpenNext or server adapters.
 

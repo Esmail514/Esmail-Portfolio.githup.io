@@ -46,6 +46,9 @@ The static HTML export will be generated inside the `out/` directory.
 
 ---
 
-## ☁️ Cloudflare Pages / Workers Deployment
-The project is configured to deploy the compiled production files seamlessly to Cloudflare:
-- The `wrangler.jsonc` file is set to point to the Next.js static output directory (`out/`), preventing upload limit errors.
+## ☁️ Deployment (Cloudflare Pages / GitHub Pages)
+The project is configured for clean static export (`output: 'export'`):
+- **Build command:** `npm run build`
+- **Output directory:** `out`
+- Works seamlessly on Cloudflare Pages and GitHub Pages without server adapters.
+

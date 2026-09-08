@@ -2,10 +2,10 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
-  faLaptopCode, 
-  faServer, 
   faDatabase, 
-  faTools 
+  faServer, 
+  faCodeBranch, 
+  faCogs 
 } from '@fortawesome/free-solid-svg-icons';
 import useInView from '@/hooks/useInView';
 
@@ -14,40 +14,43 @@ export default function Skills() {
 
   const skillsData = [
     {
-      category: 'Frontend',
-      icon: faLaptopCode,
-      skills: [
-        { name: 'Flutter', level: 95 },
-        { name: 'JavaScript', level: 90 },
-        { name: 'React', level: 80 }
-      ]
-    },
-    {
-      category: 'Backend',
-      icon: faServer,
-      skills: [
-        { name: 'Laravel', level: 90 },
-        { name: 'Python', level: 95 }, // Fixed: Mismatch resolved to 95%
-        { name: 'REST APIs', level: 90 }
-      ]
-    },
-    {
-      category: 'Database',
+      category: 'Data Engineering',
       icon: faDatabase,
       skills: [
-        { name: 'SQL Server', level: 90 },
-        { name: 'MySQL', level: 90 },
-        { name: 'PostgreSQL', level: 90 }, // Fixed: Typo 'PostegreSQL' fixed
-        { name: 'Firebase', level: 90 }
+        { name: 'Python (Data & ETL)', level: 95 },
+        { name: 'SQL & Advanced Data Modeling', level: 95 },
+        { name: 'ETL Pipelines & Processing', level: 92 },
+        { name: 'Data Warehousing & Analytics', level: 88 }
       ]
     },
     {
-      category: 'Other',
-      icon: faTools,
+      category: 'Software & Backend',
+      icon: faServer,
       skills: [
-        { name: 'Git & GitHub', level: 95 },
-        { name: 'Linux', level: 95 },
-        { name: 'Docker', level: 95 }
+        { name: 'Python & FastAPI / REST APIs', level: 95 },
+        { name: 'Laravel & PHP', level: 90 },
+        { name: 'Microservices & Distributed Systems', level: 90 },
+        { name: 'C++ & Low-Level Algorithms', level: 85 }
+      ]
+    },
+    {
+      category: 'Databases & Storage',
+      icon: faCogs,
+      skills: [
+        { name: 'PostgreSQL & MySQL', level: 95 },
+        { name: 'SQL Server', level: 90 },
+        { name: 'Redis & In-Memory Caching', level: 88 },
+        { name: 'Firebase & NoSQL', level: 88 }
+      ]
+    },
+    {
+      category: 'DevOps & Cloud',
+      icon: faCodeBranch,
+      skills: [
+        { name: 'Docker & Containerization', level: 95 },
+        { name: 'Linux Administration & Bash', level: 95 },
+        { name: 'Git & Automated CI/CD', level: 95 },
+        { name: 'Cloud Deployments & Infrastructure', level: 88 }
       ]
     }
   ];

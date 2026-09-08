@@ -38,6 +38,7 @@ export default function Header() {
           <a href="#hero" onClick={(e) => handleLinkClick(e, 'hero')}>Home</a>
           <a href="#about" onClick={(e) => handleLinkClick(e, 'about')}>About</a>
           <a href="#projects" onClick={(e) => handleLinkClick(e, 'projects')}>Projects</a>
+          <a href="#certificates" onClick={(e) => handleLinkClick(e, 'certificates')}>Certificates</a>
           <a href="#skills" onClick={(e) => handleLinkClick(e, 'skills')}>Skills</a>
           <a href="#contact" onClick={(e) => handleLinkClick(e, 'contact')}>Contact</a>
         </nav>

@@ -28,10 +28,10 @@ export default function Hero() {
             Hello, I&apos;m <span className="gradient-text">Esmail Ali</span>
           </h2>
           <p className="delay-1">
-            IT Developer | Full Stack Developer | Mobile Application | Tech Enthusiast
+            Software Engineer | Data Engineer | Backend Architecture
           </p>
           <p className="delay-2">
-            I build modern web applications and solve complex technical challenges
+            I architect scalable software, high-throughput ETL data pipelines, and robust distributed systems
           </p>
           <div className="hero-buttons delay-3">
             <a 
@@ -39,7 +39,14 @@ export default function Hero() {
               className="btn btn-primary" 
               onClick={(e) => handleScrollTo(e, 'projects')}
             >
-              View My Work
+              View Projects
+            </a>
+            <a 
+              href="#certificates" 
+              className="btn btn-outline" 
+              onClick={(e) => handleScrollTo(e, 'certificates')}
+            >
+              Certificates
             </a>
             <a 
               href="#contact" 
@@ -59,7 +66,7 @@ export default function Hero() {
               transform="translate(250 250)" 
             />
             <circle cx="250" cy="250" r="130" fill="var(--primary)" opacity="0.15" />
-            <image href="/imgs/Esmail.jpg" x="150" y="150" width="200" height="200" clipPath="circle(100px at 250 250)" />
+            <image href="/imgs/Esmail.png" x="150" y="150" width="200" height="200" clipPath="circle(100px at 250 250)" />
           </svg>
         </div>
       </div>

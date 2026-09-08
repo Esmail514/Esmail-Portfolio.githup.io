@@ -1,27 +1,28 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Esmail Ali | IT Developer & Full Stack Developer",
-  description: "IT Portfolio showcasing skills and projects in Full Stack Web Development, Flutter Mobile Apps, and IoT systems.",
+  title: "Esmail Ali | Software Engineer & Data Engineer",
+  description: "Software Engineer and Data Engineer specializing in scalable backend architectures, high-performance data pipelines, distributed systems, and database engineering.",
   keywords: [
     "Esmail Ali", 
-    "IT Developer", 
-    "Full Stack Developer", 
-    "Web Developer", 
-    "Mobile Developer",
-    "Flutter Developer", 
-    "Laravel Developer", 
-    "Nu3eed", 
-    "Shrinkly", 
-    "Alwahbani",
-    "Yemen Developer",
-    "Sana'a"
+    "Software Engineer", 
+    "Data Engineer", 
+    "Backend Developer", 
+    "Python Developer",
+    "ETL Pipelines", 
+    "PostgreSQL", 
+    "SQL", 
+    "Distributed Systems",
+    "Cloud Architecture",
+    "Docker",
+    "Laravel",
+    "REST APIs"
   ],
   authors: [{ name: "Esmail Ali" }],
   creator: "Esmail Ali",
   openGraph: {
-    title: "Esmail Ali | IT Developer & Full Stack Developer",
-    description: "IT Portfolio showcasing skills and projects in Full Stack Web Development, Flutter Mobile Apps, and IoT systems.",
+    title: "Esmail Ali | Software Engineer & Data Engineer",
+    description: "Software Engineer and Data Engineer specializing in scalable backend architectures, high-performance data pipelines, and distributed systems.",
     url: "https://Esmail514.github.io",
     siteName: "Esmail Ali Portfolio",
     locale: "en_US",
@@ -29,8 +30,8 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Esmail Ali | IT Developer & Full Stack Developer",
-    description: "IT Portfolio showcasing skills and projects.",
+    title: "Esmail Ali | Software Engineer & Data Engineer",
+    description: "Software Engineer and Data Engineer specializing in scalable backend systems and high-throughput data pipelines.",
   },
   robots: {
     index: true,

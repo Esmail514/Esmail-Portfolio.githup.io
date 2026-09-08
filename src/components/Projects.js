@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import ShimmerImage from '@/components/ShimmerImage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faExternalLinkAlt, 
@@ -120,13 +120,13 @@ export default function Projects() {
               onClick={(e) => openModal(e, project.id)}
             >
               <div className="project-image">
-                <Image 
+                <ShimmerImage 
                   src={project.image} 
                   alt={project.title}
                   width={400}
                   height={250}
                   loading="lazy"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                 />
               </div>
               <div className="project-content">
@@ -193,7 +193,7 @@ export default function Projects() {
                   <div className="preview-url">{activeProject.previewUrl}</div>
                 </div>
                 <div className="preview-frame">
-                  <Image 
+                  <ShimmerImage 
                     src={activeProject.image} 
                     alt={activeProject.title} 
                     fill 

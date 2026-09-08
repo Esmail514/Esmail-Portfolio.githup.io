@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import ShimmerImage from '@/components/ShimmerImage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faUsers, faBook, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 import useInView from '@/hooks/useInView';
@@ -17,16 +17,10 @@ export default function About() {
         <div className="about-content">
           <div className={`about-text reveal delay-1 ${inView ? 'active' : ''}`}>
             <p>
-              I am a passionate Information Technology student specializing in
-              web development and system architecture. With 3 years of hands-on
-              experience, I&apos;ve developed a strong foundation in creating
-              responsive, user-friendly applications.
+              I am a Software Engineer and Data Engineer dedicated to building high-performance backend platforms, distributed systems, and resilient data processing pipelines. With hands-on experience in software design patterns, ETL workflows, and database architecture, I bridge the gap between complex data and actionable applications.
             </p>
             <p>
-              My approach combines technical expertise with creative
-              problem-solving to deliver solutions that meet both business
-              requirements and user needs. I&apos;m constantly exploring new
-              technologies to expand my skill set.
+              My expertise spans developing robust microservices, designing scalable SQL and NoSQL data models, and automating data pipelines with modern tools like Python, Docker, and cloud databases. I continuously learn and hold 15+ industry certifications to stay at the cutting edge of modern software and data infrastructure.
             </p>
             <div className="about-stats">
               <div className={`stat-box reveal delay-2 ${inView ? 'active' : ''}`}>
@@ -52,14 +46,14 @@ export default function About() {
             </div>
           </div>
           <div className={`about-image reveal delay-5 ${inView ? 'active' : ''}`}>
-            <Image 
-              src="/imgs/Esmail.jpg" 
+            <ShimmerImage 
+              src="/imgs/Esmail.png" 
               alt="About Esmail Ali" 
               width={600} 
               height={600}
               priority={false}
               loading="lazy"
-              style={{ objectFit: 'cover' }}
+              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
             />
           </div>
         </div>
